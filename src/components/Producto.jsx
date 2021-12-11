@@ -30,7 +30,7 @@ const Producto = ({ nombreProducto, id, imagen, botonProducto }) => {
         boton: botonProducto
     }];
 
-    const validate = Yup.object({
+    const validate = Yup.object().shape({
         nombre: Yup.string()
           .max(15, 'Debe tener 15 caracteres o menos')
           .required('Required'),
@@ -68,6 +68,7 @@ const Producto = ({ nombreProducto, id, imagen, botonProducto }) => {
                 }}
 
                     accion={(values, { resetForm }) => {
+                        console.log(values);
                         resetForm();
                         console.log("formulario enviado")
                         nuevoProducto(values)
@@ -78,7 +79,7 @@ const Producto = ({ nombreProducto, id, imagen, botonProducto }) => {
 
 
                     <Box
-                        component="form"
+                        
                         sx={{
                             width: 150,
                             height: 150
@@ -89,9 +90,13 @@ const Producto = ({ nombreProducto, id, imagen, botonProducto }) => {
                         <h3 style={{ color: 'white', fontFamily: 'cursive' }}>Compra</h3>
                         
                         <Field className="field" id="nombre" name="nombre" placeholder="Nombre" />
+                        <ErrorMessage component="div" name="nombre" className="field-error text-danger" />
                         <Field className="field" id="apellido" name="apellido" placeholder="Apellido" />
+                        <ErrorMessage component="div" name="apellido" className="field-error text-danger" />
                         <Field className="field" id="email" name="email" placeholder="correo@correo.com" type="email" />
+                        <ErrorMessage component="div" name="email" className="field-error text-danger" />
                         <Field className="field" id="telefono" name="telefono" placeholder="Telefono" />
+                        <ErrorMessage component="div" name="telefono" className="field-error text-danger" />
 
                     </Box>
                 </Formulario>
