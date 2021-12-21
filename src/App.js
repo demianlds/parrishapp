@@ -7,7 +7,11 @@ import {
 } from "react-router-dom";
 import Tienda from './screens/Tienda'
 import { QuienesSomos } from './screens/QuienesSomos';
+import Galeria from './screens/Galeria'
 import "./App.css"
+import CottageIcon from '@mui/icons-material/Cottage';
+import StoreIcon from '@mui/icons-material/Store';
+import CameraIcon from '@mui/icons-material/Camera';
 
 function App() {
 
@@ -19,16 +23,22 @@ function App() {
           <nav>
             <ul>
               <li>
-                <Link className="link" to="/">Quienes Somos</Link>
+                <Link className="link" to="/"><CottageIcon fontSize="large" /></Link>
               </li>
               <li>
-                <Link className="link" to="/tienda">Tienda</Link>
+                <Link className="link" to="/tienda"><StoreIcon fontSize="large"/></Link>
+              </li>
+              <li>
+                <Link className="link" to="/galeria"><CameraIcon fontSize="large"/></Link>
               </li>
             </ul>
           </nav>
 
 
           <Switch>
+          <Route path="/galeria">
+              <Galeria/>
+            </Route>
 
             <Route path="/tienda">
               <Tienda/>
